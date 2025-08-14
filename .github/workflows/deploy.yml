@@ -1,0 +1,54 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+    
+    - name: Cache Gradle packages
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+    
+    - name: Build with Gradle
+      run: ./gradlew build
+    
+    - name: Checkout target repository
+      uses: actions/checkout@v4
+      with:
+        repository: Code-Sakura/Code-Sakura.github.io
+        path: target-repo
+        token: ${{ secrets.GIT_TOKEN }}
+    
+    - name: Copy build artifacts
+      run: |
+        mkdir -p target-repo/renlin
+        cp -r build/dist/js/productionExecutable/* target-repo/renlin/
+    
+    - name: Commit and push changes
+      run: |
+        cd target-repo
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add renlin/
+        git commit -m "Deploy renlin-site build artifacts" || exit 0
+        git push
