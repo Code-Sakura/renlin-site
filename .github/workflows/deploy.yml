@@ -14,7 +14,7 @@ jobs:
           - name: renlin-site
             dockerFile: Dockerfile
             manifestFile: ./renlin/renlin-deploy.yaml
-            repository: kigawa-net/renlin-site
+            repository: Code-Sakura/code-sakura-k8s
             harborProject: "library"
     runs-on: ubuntu-latest
     env:
