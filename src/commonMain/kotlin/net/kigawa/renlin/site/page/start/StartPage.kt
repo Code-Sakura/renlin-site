@@ -7,12 +7,14 @@ import net.kigawa.renlin.tag.Tag
 import net.kigawa.renlin.tag.div
 import net.kigawa.renlin.tag.p
 import net.kigawa.renlin.w3c.category.integration.FlowPalpableIntegration
+import net.kigawa.renlin.w3c.category.integration.FlowPhrasing
+import net.kigawa.renlin.w3c.category.native.FlowContent
 import net.kigawa.renlin.w3c.category.t
 
 class StartPage: Page {
-    override val component: Component0<Tag<in FlowPalpableIntegration>, in FlowPalpableIntegration>
+    override val component:Component0<Tag<in FlowContent>, in FlowContent>
         get() = div.component {
-            p {
+            div {
                 t("start")
             }
         }

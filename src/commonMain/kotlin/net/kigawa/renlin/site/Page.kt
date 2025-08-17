@@ -6,5 +6,5 @@ import net.kigawa.renlin.w3c.category.integration.FlowPalpableIntegration
 import net.kigawa.renlin.w3c.category.native.FlowContent
 
 interface Page {
-    val component: Component0<Tag<in FlowPalpableIntegration>, in FlowPalpableIntegration>
+    val component: Component0<Tag<in FlowContent>, in FlowContent>
 }

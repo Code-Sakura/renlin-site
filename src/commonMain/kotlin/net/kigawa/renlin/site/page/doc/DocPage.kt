@@ -12,10 +12,12 @@ import net.kigawa.renlin.w3c.category.native.FlowContent
 import net.kigawa.renlin.w3c.category.t
 
 class DocPage: Page {
-    override val component: Component0<Tag<in FlowPalpableIntegration>, in FlowPalpableIntegration>
+    override val component: Component0<Tag<in FlowContent>, in FlowContent>
         get() = div.component {
-            p {
-                t("doc")
+            div {
+                p {
+                    t("doc")
+                }
             }
         }
 }

@@ -11,9 +11,9 @@ import net.kigawa.renlin.tag.div
 class Root(
     val name: String,
 ) {
-    val layout: Layout = Layout()
     val hakate = HakateInitializer()
     val dispatcher = hakate.newStateDispatcher()
+    val layout: Layout = Layout(dispatcher)
     val path = dispatcher.newState(DomRouterProvider.path.value)
     val context = Dispatchers.Default
 
@@ -38,6 +38,7 @@ class Root(
                 page.useValue()?.component?.invoke()
             }
         }
+        layout.footer("footer")
     }
 
 }
