@@ -29,8 +29,6 @@ class Root(
         Routes.pages.entries.firstOrNull { it.key.isMach(p) }?.value?.invoke()
     }
 
-    var update: (Int) -> Unit = {}
-
     val root = div.component {
         layout.navigation("navigation")
         layout.main("main-display") {

@@ -35,6 +35,10 @@ class Layout(stateDispatcher: StateDispatcher) {
                         fontSize = 24.px
                         fontWeight = FontWeight.BOLD
                         cursor = Cursor.POINTER
+                        display = Display.BLOCK
+                        textDecoration = TextDecoration.NONE
+                        color = Color.BLACK
+                        marginBottom = 10.px
                     }
                     href = Href(Routes.top.path.strPath())
                 }
@@ -42,8 +46,11 @@ class Layout(stateDispatcher: StateDispatcher) {
                     t("Home")
                     css {
                         padding = 10.px
-                        marginRight = 20.px
                         cursor = Cursor.POINTER
+                        display = Display.BLOCK
+                        textDecoration = TextDecoration.NONE
+                        color = Color.BLACK
+                        marginBottom = 5.px
                     }
                     href = Href(Routes.top.path.strPath())
                 }
@@ -51,8 +58,11 @@ class Layout(stateDispatcher: StateDispatcher) {
                     t("Get Started")
                     css {
                         padding = 10.px
-                        marginRight = 20.px
                         cursor = Cursor.POINTER
+                        display = Display.BLOCK
+                        textDecoration = TextDecoration.NONE
+                        color = Color.BLACK
+                        marginBottom = 5.px
                     }
                     href = Href(Routes.start.path.strPath())
                 }
@@ -60,26 +70,36 @@ class Layout(stateDispatcher: StateDispatcher) {
                     t("Documentation")
                     css {
                         padding = 10.px
-                        marginRight = 20.px
                         cursor = Cursor.POINTER
+                        display = Display.BLOCK
+                        textDecoration = TextDecoration.NONE
+                        color = Color.BLACK
+                        marginBottom = 5.px
                     }
                     href = Href(Routes.doc.path.strPath())
                 }
                 val isMenuOpen = isMenuOpenState.useValue()
                 css {
+                    position = Position.ABSOLUTE
+                    top = 60.px
+                    left = 0.px
+                    width = 100.percent
+                    backgroundColor = Color.WHITE
+                    padding = 20.px
                     display = if (isMenuOpen) Display.FLEX else Display.NONE
-                    flexDirection = FlexDirection.ROW
-                    alignItems = AlignItems.CENTER
+                    flexDirection = FlexDirection.COLUMN
+                    alignItems = AlignItems.FLEX_START
                 }
             }
 
             div("menu-toggle") {
-                t("☰")
+                val isMenuOpen = isMenuOpenState.useValue()
+                t(if (isMenuOpen) "✕" else "☰")
                 css {
                     fontSize = 24.px
                     cursor = Cursor.POINTER
+                    padding = 5.px
                 }
-                val isMenuOpen = isMenuOpenState.useValue()
                 onClick {
                     isMenuOpenState.set(isMenuOpen.not())
                 }
@@ -101,8 +121,4 @@ class Layout(stateDispatcher: StateDispatcher) {
     }
 
     val footer = div.component { }
-
-    val test = fragment<FlowContent>().component { }
-    val test1 = fragment<PhrasingContent>().component { }
-    val test2 = fragment<FlowPhrasingIntegration>().component { }
 }
