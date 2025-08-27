@@ -20,4 +20,5 @@ fun kotlinPluginId(pluginName: String, version: String = kotlinVersion) =
 fun kotlinId(id: String) = "org.jetbrains.kotlin:$id:$kotlinVersion"
 dependencies {
     implementation(kotlinPluginId("multiplatform"))
+    implementation(pluginId("net.kigawa.renlin-compiler", "1.3.8"))
 }
