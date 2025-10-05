@@ -1,6 +1,6 @@
 # Renlin Site
 
-kotlin/jsで実装されたSPAのweb framework, 'renlin'のでもページです。
+kotlin/jsで実装されたSPAのweb framework, 'renlin'のデモページです。
 
 ## Links
 * 状態管理ライブラリ: [hakate](https://github.com/Code-Sakura/hakate)
